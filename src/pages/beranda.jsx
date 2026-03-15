@@ -209,100 +209,150 @@ export default function Beranda() {
 
       <div className="bg-white text-slate-800">
 
-        {/* ── 1. HERO ── */}
-        <section
-          className="relative flex items-center justify-center min-h-[85vh] overflow-hidden"
-          style={{ background:"linear-gradient(160deg,#0f2044 0%,#1a3a6e 45%,#2d5fa8 100%)" }}
-        >
-          <div className="absolute inset-0" style={{ background:"rgba(5,15,40,0.52)" }} />
-          <div className="absolute inset-0 opacity-[0.06]"
-            style={{ backgroundImage:"radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize:"32px 32px" }} />
+   {/* ── 1. HERO ── */}
+<section
+  className="relative flex items-center justify-center min-h-[85vh] overflow-hidden"
+  style={{ background:"linear-gradient(160deg,#0f2044 0%,#1a3a6e 45%,#2d5fa8 100%)" }}
+>
+  <div className="absolute inset-0" style={{ background:"rgba(5,15,40,0.52)" }} />
+  <div className="absolute inset-0 opacity-[0.06]"
+    style={{ backgroundImage:"radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize:"32px 32px" }} />
+  {/* glow atas */}
+  <div className="absolute inset-0 opacity-20"
+    style={{ background:"radial-gradient(ellipse 70% 50% at 50% 0%,#3b5bdb,transparent)" }} />
 
-          <div className="relative z-10 text-center w-full max-w-lg mx-auto px-5">
+  <div className="relative z-10 text-center w-full max-w-lg mx-auto px-5">
 
-            <h1
-              className="text-white leading-tight mb-4"
-              style={{
-                fontFamily:"'Playfair Display',serif",
-                fontSize:"clamp(2rem,8vw,4rem)",
-                textShadow:"0 2px 12px rgba(0,0,0,.4)",
-                animation:"hsu .8s .15s ease both",
-              }}
-            >
-              Selamat Datang di
-              <br />
-              <span style={{ color:"#c9973a" }}>Desa Tumani</span>
-            </h1>
+    {/* badge resmi */}
+    <div
+      className="inline-flex items-center gap-2 mb-6 rounded-full px-4 py-1.5"
+      style={{
+        background:"rgba(255,255,255,0.07)",
+        border:"1px solid rgba(255,255,255,0.18)",
+        animation:"hsu .8s .05s ease both",
+      }}
+    >
+      <span style={{ fontSize:13 }}>🏛️</span>
+      <span style={{ color:"rgba(255,255,255,0.65)", fontSize:"0.68rem", fontWeight:700, letterSpacing:"0.12em", textTransform:"uppercase" }}>
+        Website Resmi · Pemerintah Desa Tumani
+      </span>
+    </div>
 
-            <p
-              className="text-white/70 leading-relaxed mb-7 mx-auto"
-              style={{ fontSize:"clamp(0.78rem,3.5vw,0.9rem)", animation:"hsu .8s .25s ease both" }}
-            >
-              Kecamatan Maesaan · Kabupaten Minahasa Selatan · Provinsi Sulawesi Utara
-            </p>
+    {/* judul */}
+    <h1
+      className="text-white leading-tight mb-3"
+      style={{
+        fontFamily:"'Playfair Display',serif",
+        fontSize:"clamp(2rem,8vw,4rem)",
+        textShadow:"0 2px 16px rgba(0,0,0,.5)",
+        animation:"hsu .8s .15s ease both",
+      }}
+    >
+      Selamat Datang di
+      <br />
+      <span style={{ color:"#c9973a" }}>Desa Tumani</span>
+    </h1>
 
-            {/* Stats grid 2×2 */}
-            <div
-              style={{
-                display:"grid",
-                gridTemplateColumns:"1fr 1fr",
-                gap:"8px",
-                marginBottom:"20px",
-                animation:"hsu .8s .35s ease both",
-              }}
-            >
-              {STATS.map(s => (
-                <div key={s.label} className="hero-stat-badge">
-                  <span style={{ fontSize:14 }}>{s.icon}</span>
-                  <span style={{ color:"#c9973a", fontWeight:700, fontSize:"clamp(0.75rem,3vw,0.85rem)" }}>
-                    {s.value}
-                  </span>
-                  <span style={{ color:"rgba(255,255,255,0.75)", fontSize:"clamp(0.68rem,2.8vw,0.78rem)", whiteSpace:"nowrap" }}>
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+    {/* garis dekoratif emas */}
+    <div
+      className="mx-auto mb-5"
+      style={{
+        width:60,
+        height:2,
+        background:"linear-gradient(90deg,transparent,#c9973a,transparent)",
+        animation:"hsu .8s .2s ease both",
+      }}
+    />
 
-            {/* CTA buttons grid 2 kolom */}
-            <div
-              style={{
-                display:"grid",
-                gridTemplateColumns:"1fr 1fr",
-                gap:"10px",
-                animation:"hsu .8s .45s ease both",
-              }}
-            >
-             
-              <Link
-                to="/sejarah"
-                onClick={scrollTop}
-                style={{
-                  background:"rgba(255,255,255,0.08)",
-                  color:"#fff",
-                  border:"2px solid rgba(255,255,255,0.4)",
-                  borderRadius:"12px",
-                  padding:"12px 10px",
-                  fontWeight:700,
-                  fontSize:"clamp(0.75rem,3vw,0.875rem)",
-                  display:"flex",
-                  alignItems:"center",
-                  justifyContent:"center",
-                  gap:"5px",
-                  textDecoration:"none",
-                }}
-              >
-                📖 Pelajari Desa
-              </Link>
-            </div>
-          </div>
+    {/* subjudul */}
+    <p
+      className="text-white/65 leading-relaxed mb-2 mx-auto"
+      style={{ fontSize:"clamp(0.78rem,3.5vw,0.88rem)", animation:"hsu .8s .25s ease both" }}
+    >
+      Kecamatan Maesaan · Kabupaten Minahasa Selatan
+    </p>
+    <p
+      className="text-white/45 leading-relaxed mb-7 mx-auto"
+      style={{ fontSize:"clamp(0.7rem,3vw,0.8rem)", animation:"hsu .8s .28s ease both" }}
+    >
+      Provinsi Sulawesi Utara · Indonesia
+    </p>
 
-          <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
-            <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style={{ display:"block", height:48 }}>
-              <path d="M0,32 C480,0 960,48 1440,16 L1440,48 L0,48 Z" fill="#ffffff"/>
-            </svg>
-          </div>
-        </section>
+    {/* stats grid 2×2 */}
+    <div
+      style={{
+        display:"grid",
+        gridTemplateColumns:"1fr 1fr",
+        gap:"8px",
+        marginBottom:"20px",
+        animation:"hsu .8s .35s ease both",
+      }}
+    >
+      {STATS.map(s => (
+        <div key={s.label} className="hero-stat-badge">
+          <span style={{ fontSize:14 }}>{s.icon}</span>
+          <span style={{ color:"#c9973a", fontWeight:700, fontSize:"clamp(0.75rem,3vw,0.85rem)" }}>
+            {s.value}
+          </span>
+          <span style={{ color:"rgba(255,255,255,0.70)", fontSize:"clamp(0.68rem,2.8vw,0.78rem)", whiteSpace:"nowrap" }}>
+            {s.label}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {/* CTA button — 1 kolom full width */}
+    <div
+      style={{
+        display:"grid",
+        gridTemplateColumns:"1fr",
+        gap:"10px",
+        animation:"hsu .8s .45s ease both",
+      }}
+    >
+      <Link
+        to="/sejarah"
+        onClick={scrollTop}
+        style={{
+          background:"rgba(255,255,255,0.08)",
+          color:"#fff",
+          border:"1.5px solid rgba(255,255,255,0.30)",
+          borderRadius:"12px",
+          padding:"12px 10px",
+          fontWeight:700,
+          fontSize:"clamp(0.75rem,3vw,0.875rem)",
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"center",
+          gap:"5px",
+          textDecoration:"none",
+        }}
+      >
+        📖 Pelajari Desa
+      </Link>
+    </div>
+
+    {/* disclaimer resmi */}
+    <p
+      className="mt-6 mx-auto"
+      style={{
+        color:"rgba(255,255,255,0.30)",
+        fontSize:"0.65rem",
+        letterSpacing:"0.05em",
+        animation:"hsu .8s .55s ease both",
+      }}
+    >
+      © {new Date().getFullYear()} Pemerintah Desa Tumani · Kec. Maesaan · Kab. Minahasa Selatan
+    </p>
+  </div>
+
+  {/* wave */}
+  <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style={{ display:"block", height:48 }}>
+      <path d="M0,32 C480,0 960,48 1440,16 L1440,48 L0,48 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
 
         {/* ── 2. WILAYAH & DEMOGRAFI ── */}
         <section className="py-16" style={{ background:"#f4f6fb" }}>
@@ -471,72 +521,70 @@ export default function Beranda() {
           </div>
         </section>
 
-       {/* ── 5. GALERI ── */}
+      {/* ── 5. GALERI ── */}
 <section className="py-20 bg-white">
   <div className="max-w-6xl mx-auto px-6">
     <SH title="Galeri Kegiatan" sub="Dokumentasi kegiatan dan kehidupan masyarakat Desa Tumani" />
     <Reveal variant="up">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {GALERI.slice(0, 10).map((g) => (
           <div
             key={g.id}
-            className="group relative iz rounded-xl overflow-hidden shadow-sm cursor-default"
-            style={{ aspectRatio:"1/1" }}
+            className="group flex flex-col rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200"
           >
-            <Foto
-              src={g.src}
-              label={g.ket}
-              className="w-full h-full"
-              imgClass="w-full h-full object-cover"
-            />
-            {/* overlay keterangan hover */}
-            <div
-              className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              style={{ background:"linear-gradient(to top,rgba(15,32,68,0.88) 0%,transparent 55%)" }}
-            >
-              <p className="text-white text-xs font-semibold px-3 pb-3 leading-snug line-clamp-3">
+            {/* gambar */}
+            <div className="relative iz overflow-hidden" style={{ aspectRatio:"1/1" }}>
+              <Foto
+                src={g.src}
+                label={g.ket}
+                className="w-full h-full"
+                imgClass="w-full h-full object-cover"
+              />
+              {/* nomor badge */}
+              <div
+                className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-bold"
+                style={{ background:"rgba(15,32,68,0.75)", fontSize:10 }}
+              >
+                {g.id}
+              </div>
+            </div>
+            {/* keterangan di bawah */}
+            <div className="px-3 py-2.5 bg-white flex-1">
+              <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">
                 {g.ket}
               </p>
-            </div>
-            {/* nomor */}
-            <div
-              className="absolute top-2 left-2 w-5 h-5 rounded-full flex items-center justify-center text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              style={{ background:"rgba(15,32,68,0.75)", fontSize:10 }}
-            >
-              {g.id}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 max-w-2xl mx-auto">
         {GALERI.slice(10).map((g) => (
           <div
             key={g.id}
-            className="group relative iz rounded-xl overflow-hidden shadow-sm cursor-default"
-            style={{ aspectRatio:"1/1" }}
+            className="group flex flex-col rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200"
           >
-            <Foto
-              src={g.src}
-              label={g.ket}
-              className="w-full h-full"
-              imgClass="w-full h-full object-cover"
-            />
-            {/* overlay keterangan hover */}
-            <div
-              className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              style={{ background:"linear-gradient(to top,rgba(15,32,68,0.88) 0%,transparent 55%)" }}
-            >
-              <p className="text-white text-xs font-semibold px-3 pb-3 leading-snug line-clamp-3">
+            {/* gambar */}
+            <div className="relative iz overflow-hidden" style={{ aspectRatio:"1/1" }}>
+              <Foto
+                src={g.src}
+                label={g.ket}
+                className="w-full h-full"
+                imgClass="w-full h-full object-cover"
+              />
+              {/* nomor badge */}
+              <div
+                className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-bold"
+                style={{ background:"rgba(15,32,68,0.75)", fontSize:10 }}
+              >
+                {g.id}
+              </div>
+            </div>
+            {/* keterangan di bawah */}
+            <div className="px-3 py-2.5 bg-white flex-1">
+              <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">
                 {g.ket}
               </p>
-            </div>
-            {/* nomor */}
-            <div
-              className="absolute top-2 left-2 w-5 h-5 rounded-full flex items-center justify-center text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              style={{ background:"rgba(15,32,68,0.75)", fontSize:10 }}
-            >
-              {g.id}
             </div>
           </div>
         ))}
@@ -602,16 +650,6 @@ export default function Beranda() {
                   Kabupaten Minahasa Selatan,<br/>
                   Sulawesi Utara
                 </p>
-            },
-            {
-              icon:"🕐",
-              title:"Jam Pelayanan",
-              content:
-                <div className="text-sm text-slate-600 space-y-1.5">
-                  <p>🟢 <strong>Senin–Kamis:</strong> 08.00–15.00 WITA</p>
-                  <p>🟡 <strong>Jumat:</strong> 08.00–11.30 WITA</p>
-                  <p>🔴 <strong>Sabtu & Minggu:</strong> Libur</p>
-                </div>
             },
           ].map(c => (
 
