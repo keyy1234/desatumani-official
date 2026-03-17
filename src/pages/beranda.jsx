@@ -53,14 +53,42 @@ const PERANGKAT = [
   { jabatan:"Kasie Pelayanan",        nama:"AFNNY M. D. KIMBAL",      foto:pelayanan     },
 ];
 
-
-
 const POTENSI = [
-  { label:"Padi",   src:padi,   emoji:"🌾", desc:"Komoditas utama pertanian Desa Tumani yang menjadi sumber penghidupan warga." },
-  { label:"Jagung", src:jagung, emoji:"🌽", desc:"Tanaman palawija unggulan dengan hasil panen melimpah setiap musim." },
-  { label:"Kelapa", src:kelapa, emoji:"🥥", desc:"Perkebunan kelapa tersebar luas, menjadi komoditas ekspor andalan desa." },
+  { 
+    label: "Padi", 
+    src: padi, 
+    emoji: "🌾", 
+    desc: "Padi saat ini menjadi komoditas yang paling menguntungkan di Desa Tumani dibandingkan tanaman lainnya.",
+    details: [
+      "Saat ini petani beralih ke jenis Padi Serayu karena hasilnya paling memuaskan. Sebelumnya warga sempat menanam jenis Superwin, namun karena hasil produksinya sempat menurun, Serayu kini menjadi komoditas utama di wilayah Maesaan hingga Tompaso Baru.",
+      "Siklus Panen Sangat produktif, dalam setahun petani bisa melakukan panen sampai 4 kali dengan masa tanam sekitar 3-4 bulan.",
+      "Sistem Pengairan Bergantung pada irigasi, air sangat mencukupi, air tidak pernah sampai habis total.",
+      "Estimasi Hasil Dalam 1 hektar lahan, petani bisa menghasilkan sekitar 900kg beras. Warga biasanya menghitung hasil gilingan dalam satuan karung (rata-rata 60kg per karung).",
+      "Sistem Kerja Untuk penanaman dan panen biasanya menggunakan tenaga sewa (harian), sementara perawatan rutin seperti pemupukan dan penyemprotan dilakukan sendiri oleh pemilik lahan."
+    ]
+  },
+  { 
+    label: "Jagung (Milu)", 
+    src: jagung, 
+    emoji: "🌽", 
+    desc: "Jagung atau Milu menjadi pilar ekonomi kedua yang sangat penting bagi warga Tumani.",
+    details: [
+      "Jenis Bibit Menggunakan Milu Paket (Hibrida) hasil persilangan. Meskipun harga bibitnya cukup mahal (mencapai Rp400rb/kg), namun hasilnya sangat stabil dan jarang meleset.",
+      "Produksi & Tantangan Rata-rata hasil panen mencapai 5 ton per hektar. Tantangan utama petani adalah harga pupuk yang mahal, sehingga pemupukan yang idealnya 3 kali, biasanya hanya dilakukan maksimal 2 kali.",
+      "Masa Panen & Pasar, Panen dilakukan setiap 3 bulan. Perputaran penjualannya masih dominan di sekitar wilayah Tumani dan wilayah Minahasa (Tengah & Utara)."
+    ]
+  },
+  { 
+    label: "Kelapa", 
+    src: kelapa, 
+    emoji: "🥥", 
+    desc: "Kelapa di Desa Tumani berfungsi sebagai tanaman antara yang memberikan penghasilan tambahan secara rutin.",
+    details: [
+      "Perubahan Cara Jual, Dulu warga rajin mengolah kelapa menjadi Kopra melalui proses pemanggangan atau penjemuran yang memakan waktu 3 hari hingga seminggu. Namun sekarang, warga lebih suka langsung menjual kelapa bulat (belum dikupas) karena prosesnya lebih cepat dan penjualannya mudah, meskipun harganya sering fluktuatif.",
+      "Masa Panen, Sama seperti jagung, kelapa dipanen setiap 3 bulan sekali (sekitar 3-4 kali dalam setahun)."
+    ]
+  }
 ];
-
 const STATS = [
   { icon:"📐", label:"Luas Wilayah",     value:"1,4 km²"  },
   { icon:"🗺️", label:"Luas Tumani Raya", value:"2.144 ha" },
@@ -603,118 +631,190 @@ export default function Beranda() {
   </div>
 </section>
 
-  {/* ── 6. POTENSI ── */}
-        <section className="py-20" style={{ background:"#f4f6fb" }}>
-          <div className="max-w-5xl mx-auto px-6">
-            <SH title="Potensi Desa" sub="Komoditas unggulan dan sumber daya alam Desa Tumani" />
-            <div className="grid md:grid-cols-3 gap-6">
-              {POTENSI.map((p,i) => (
-                <Reveal key={p.label} variant="up" delay={i*100}>
-                  <div className="cl bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-                    <div className="iz" style={{ height:192 }}>
-                      <Foto src={p.src} label={`Foto ${p.label}`} className="w-full h-48" imgClass="w-full h-48 object-cover" />
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-2xl">{p.emoji}</span>
-                        <h3 className="font-bold text-slate-800">{p.label}</h3>
-                      </div>
-                      <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+<section className="py-16 px-4 md:py-20" style={{ background: "#f4f6fb" }}>
+  <div className="max-w-6xl mx-auto">
+    {/* Section Header */}
+    <div className="text-center mb-12">
+      <h2 className="text-[#0f2044] font-extrabold text-3xl md:text-4xl mb-3">Potensi Ekonomi Desa</h2>
+      <p className="text-slate-500 max-w-2xl mx-auto">
+        Sektor pertanian sebagai pilar utama kesejahteraan masyarakat Desa Tumani
+      </p>
+    </div>
+
+    {/* Grid Kartu Potensi */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      {POTENSI.map((p, i) => (
+        <div key={p.label} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 h-full flex flex-col">
+          {/* Bagian Foto */}
+          <div className="relative h-48 md:h-52 shrink-0">
+            <img src={p.src} alt={p.label} className="w-full h-full object-cover" />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">{p.emoji}</span>
+                <h3 className="font-bold text-white text-lg">{p.label}</h3>
+              </div>
             </div>
           </div>
-        </section>
+          
+          {/* Bagian Konten */}
+          <div className="p-6 flex-1 flex flex-col">
+            {/* Area Deskripsi - Diberi min-height agar list di bawahnya sejajar horizontal */}
+            <div className="min-h-[80px] md:min-h-[100px] flex items-start">
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 italic border-l-4 border-[#c9973a] pl-3">
+                "{p.desc}"
+              </p>
+            </div>
+            
+            {/* List Details - mt-auto dihilangkan agar jarak antar poin konsisten dari atas */}
+            <ul className="space-y-4 mt-2">
+              {p.details.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-xs md:text-sm text-slate-600 leading-relaxed">
+                  <span className="text-[#c9973a] font-bold mt-1 shrink-0">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
 
+    {/* Info Tambahan: Dinamika Pertanian */}
+    <div className="mt-10 bg-white/60 border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h4 className="text-[#0f2044] font-bold text-xl mb-4 flex items-center gap-2">
+            <span>🔄</span> Dinamika & Pergeseran Tanaman
+          </h4>
+          <div className="space-y-4">
+            <p className="text-slate-600 text-sm leading-relaxed">
+              <span className="font-bold text-[#0f2044]">Pergeseran Tanaman:</span> Petani Desa Tumani sangat dinamis. Mereka sempat beralih ke tanaman Nilam karena biaya operasionalnya kecil, namun kini sebagian besar sudah kembali ke tanaman pangan (Padi dan Jagung).
+            </p>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              <span className="font-bold text-[#0f2044]">Komoditas Utama:</span> Secara keseluruhan, terdapat empat pilar kekuatan ekonomi di Desa Tumani. Di antara semuanya, <span className="text-[#c9973a] font-bold">Padi tetap dianggap paling memberikan keuntungan finansial</span> bagi petani saat ini.
+            </p>
+          </div>
+        </div>
 
-       {/* ── 7. KONTAK & LOKASI ── */}
-<section className="py-20 bg-white">
+        {/* Kotak Ringkasan 4 Pilar */}
+        <div className="bg-[#0f2044] rounded-2xl p-6 text-white shadow-lg">
+          <h4 className="text-[#c9973a] font-bold text-xs uppercase tracking-[0.2em] mb-5 border-b border-white/10 pb-2">
+            4 PILAR EKONOMI DESA TUMANI
+          </h4>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex items-center gap-3 text-sm font-medium hover:text-[#c9973a] transition-colors">
+              <span className="bg-white/10 p-2 rounded-lg text-lg">🌾</span> Padi
+            </div>
+            <div className="flex items-center gap-3 text-sm font-medium hover:text-[#c9973a] transition-colors">
+              <span className="bg-white/10 p-2 rounded-lg text-lg">🌽</span> Jagung
+            </div>
+            <div className="flex items-center gap-3 text-sm font-medium hover:text-[#c9973a] transition-colors">
+              <span className="bg-white/10 p-2 rounded-lg text-lg">🥥</span> Kelapa
+            </div>
+            <div className="flex items-center gap-3 text-sm font-medium hover:text-[#c9973a] transition-colors">
+              <span className="bg-white/10 p-2 rounded-lg text-lg">🌿</span> Nilam
+            </div>
+          </div>
+          <div className="mt-6 pt-4 border-t border-white/20 text-xs text-white/70 flex items-center gap-2">
+            <span className="text-[#c9973a] text-lg">✓</span> 
+            Padi adalah komoditas utama yang paling menguntungkan.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  {/* ── 7. KONTAK & LOKASI ── */}
+<section className="py-16 md:py-20 bg-white">
   <div className="max-w-5xl mx-auto px-6">
     <SH title="Kontak & Lokasi" />
 
-    <div className="grid lg:grid-cols-2 gap-10">
-
+    <div className="grid lg:grid-cols-2 gap-8 md:gap-10">
+      
+      {/* Kolom Kiri: Informasi Teks */}
       <Reveal variant="left">
-        <div className="space-y-5">
-
-          {[
-            {
-              icon:"📍",
-              title:"Alamat Kantor Desa",
-              content:
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Jl. Amurang – Kotamobagu, Jaga IV,<br/>
-                  Desa Tumani, Kecamatan Maesaan,<br/>
-                  Kabupaten Minahasa Selatan,<br/>
-                  Sulawesi Utara
-                </p>
-            },
-          ].map(c => (
-
-            <div
-              key={c.title}
-              className="bg-slate-50 rounded-2xl border border-slate-100 p-6"
-            >
-
-              <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
-                <span
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
-                  style={{ background:"#e8eef8" }}
-                >
-                  {c.icon}
-                </span>
-
-                {c.title}
-              </h3>
-
-              {c.content}
-
-            </div>
-
-          ))}
-
+        <div className="space-y-4">
           
+          {/* Alamat */}
+          <div className="bg-slate-50 rounded-2xl border border-slate-100 p-6">
+            <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#e8eef8] text-base">📍</span>
+              Alamat Kantor Desa
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Jl. Amurang – Kotamobagu, Jaga IV,<br/>
+              Desa Tumani, Kecamatan Maesaan,<br/>
+              Kabupaten Minahasa Selatan, Sulawesi Utara
+            </p>
+          </div>
+
+          {/* WhatsApp Hukum Tua */}
+          <div className="bg-slate-50 rounded-2xl border border-slate-100 p-6">
+            <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#e8eef8] text-base">📞</span>
+              Layanan Hubungi Kami
+            </h3>
+            <div className="flex flex-col gap-3">
+              <p className="text-slate-500 text-[11px] leading-relaxed">
+                Klik tombol di bawah untuk terhubung langsung dengan Pjb. Hukum Tua melalui WhatsApp:
+              </p>
+              
+              <a 
+                href={`https://wa.me/6282349243566?text=${encodeURIComponent(
+                  "Halo Ibu Hukum Tua Fesna Assa, saya sedang melihat Website Resmi Desa Tumani dan ingin bertanya/melaporkan"
+                )}`}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 bg-white border border-green-200 rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition-all active:scale-95 group"
+              >
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-sm group-hover:bg-green-600 transition-colors">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Pjb. Hukum Tua</span>
+                  <span className="text-slate-800 font-bold text-sm">Fesna F. Y. Assa</span>
+                  <span className="text-green-600 text-[11px] font-semibold mt-0.5 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    Terhubung ke WhatsApp
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
 
         </div>
       </Reveal>
 
+      {/* Kolom Kanan: Maps */}
       <Reveal variant="right">
-
         <div className="flex flex-col gap-4 h-full">
-
           <div
-            className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex-1"
-            style={{ minHeight:360 }}
+            className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex-1 bg-slate-50"
+            style={{ minHeight: 340 }}
           >
-
             <iframe
               title="Lokasi Desa Tumani"
-              src="https://maps.google.com/maps?q=Tumani,+Maesaan,+Minahasa+Selatan,+Sulawesi+Utara&z=15&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15958.46272551468!2d124.4615!3d0.9013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x327e256f00000000%3A0x0!2sTumani!5e0!3m2!1sid!2sid!4v1700000000000"
               width="100%"
               height="100%"
-              style={{ border:0, minHeight:360 }}
+              style={{ border: 0, minHeight: 340 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-
           </div>
 
-          {/* Tombol Google Maps */}
-
           <a
-            href="https://www.google.com/maps/place/Tumani,+Maesaan,+South+Minahasa+Regency,+North+Sulawesi/@0.901337,124.471504,15z"
-            target="_blank"
+            href="https://maps.app.goo.gl/..." 
+            target="_blank" 
             rel="noopener noreferrer"
-            className="btn-outline flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm"
+            className="bg-[#0f2044] text-white flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm shadow-lg shadow-slate-200 active:scale-95 transition-transform"
           >
-            🗺️ Buka di Google Maps
+            🗺️ Petunjuk Arah (Google Maps)
           </a>
-
         </div>
-
       </Reveal>
 
     </div>
